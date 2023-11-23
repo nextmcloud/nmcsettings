@@ -12,7 +12,7 @@ declare(strict_types=1);
             <div class="personal-settings-setting-box quota-box">
                 <h2><?php p($l->t('Storage utilisation')); ?></h2>
                 <div class="icon-quota">
-                    <div class="quota-text">
+                    <div class="quota-text hidden">
                         <span class="usage-total">
                             <?php if ($_['quota'] === \OCP\Files\FileInfo::SPACE_UNLIMITED) : ?>
                                 <strong><?php p($_['usage']); ?></strong> <?php p($l->t('of')); ?> <?php p($_['totalSpace']); ?>
