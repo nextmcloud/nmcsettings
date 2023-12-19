@@ -22,7 +22,7 @@ declare(strict_types=1);
  *
  */
 
- script('theming', 'theming');
+script('theming', 'theming');
 ?>
 
 <div id="nmcsettings">

@@ -27,7 +27,11 @@
 			:limit-width="false"
 			class="theming">
 			<p v-html="description" />
-			<h2 class="subheader">{{ t('nmcsettings', 'Theming') }}</h2>
+
+			<h2 class="subheader">
+				{{ t('nmcsettings', 'Theming') }}
+			</h2>
+
 			<p v-html="themedescription" />
 
 			<div class="theming__preview-list">
@@ -48,7 +52,6 @@
 import { generateOcsUrl } from '@nextcloud/router'
 import { loadState } from '@nextcloud/initial-state'
 import axios from '@nextcloud/axios'
-import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
 import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection.js'
 
 import ItemPreview from './ItemPreview.vue'
@@ -68,7 +71,6 @@ export default {
 
 	components: {
 		ItemPreview,
-		NcCheckboxRadioSwitch,
 		NcSettingsSection,
 	},
 
