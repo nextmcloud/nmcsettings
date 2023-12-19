@@ -6,7 +6,7 @@ use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\Settings\IIconSection;
 
-class AccountSettings implements IIconSection {
+class Themes implements IIconSection {
 	private IL10N $l;
 	private IURLGenerator $urlGenerator;
 
@@ -16,18 +16,18 @@ class AccountSettings implements IIconSection {
 	}
 
 	public function getIcon(): string {
-		return $this->urlGenerator->imagePath('nmctheme', 'actions/user.svg');
+		return $this->urlGenerator->imagePath('nmctheme', 'settings/appearance.svg');
 	}
 
 	public function getID(): string {
-		return 'account';
+		return 'themes';
 	}
 
 	public function getName(): string {
-		return $this->l->t('Account settings');
+		return $this->l->t('Appearance');
 	}
 
 	public function getPriority(): int {
-		return -20;
+		return -1;
 	}
 }

@@ -20,8 +20,9 @@ window.addEventListener('DOMContentLoaded', function() {
 		const admin = '/admin'
 		const account = '/account'
 		const sessions = '/sessions'
+		const themes = '/themes'
 
-		if (href.includes(admin) || href.includes(account) || href.includes(sessions)) {
+		if (href.includes(admin) || href.includes(account) || href.includes(sessions) || href.includes(themes)) {
 			if (href.includes(admin)) {
 				document.querySelectorAll('.app-navigation-caption').forEach(function(caption) {
 					caption.style.display = 'flex'
