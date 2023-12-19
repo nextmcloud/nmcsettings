@@ -25,6 +25,7 @@
     "here.": "here.",
     "Could not copy WebDAV address. Please copy it manually." : "Could not copy WebDAV address. Please copy it manually.",
     "Devices & sessions" : "Devices & sessions",
+    "Device name" : "Device name",
     "Marked for remote wipe" : "Marked for remote wipe",
     "Device settings" : "Device settings",
     "Allow filesystem access" : "Allow filesystem access",
@@ -104,6 +105,16 @@
     "No email address set" : "No email address set",
     "Additional emails" : "Alternative emails",
     "Add additional email" : "Add alternative email address",
-    "There were too many requests from your network. Retry later or contact your administrator if this is an error." : "There were too many requests from your network. Retry later or contact your administrator if this is an error."
+    "There were too many requests from your network. Retry later or contact your administrator if this is an error." : "There were too many requests from your network. Retry later or contact your administrator if this is an error.",
+    "Keyboard shortcuts" : "Keyboard shortcuts",
+    "In some cases keyboard shortcuts can interfere with accessibility tools. In order to allow focusing on your tool correctly you can disable all keyboard shortcuts here. This will also disable all available shortcuts in apps." : "In some cases keyboard shortcuts can interfere with accessibility tools. In order to allow focusing on your tool correctly you can disable all keyboard shortcuts here. This will also disable all available shortcuts in apps.",
+    "Disable all keyboard shortcuts" : "Disable all keyboard shortcuts",
+    "Universal access is very important to us. We follow web standards and check to make everything usable also without mouse, and assistive software such as screenreaders. We aim to be compliant with the {guidelines}Web Content Accessibility Guidelines{linkend} 2.1 on AA level." : "Universal access is very important to us. We follow web standards and check to make everything usable also without mouse, and assistive software such as screenreaders. We aim to be compliant with the {guidelines}Web Content Accessibility Guidelines{linkend} 2.1 on AA level.",
+    "If you find any issues, do not hesitate to report them on {issuetracker}our issue tracker{linkend}. And if you want to get involved, come join {designteam}our design team{linkend}!" : "If you find any issues, do not hesitate to report them on {issuetracker}our issue tracker{linkend}. And if you want to get involved, come join {designteam}our design team{linkend}!",
+    "You are already using a custom theme. Theming app settings might be overwritten by that." : "You are already using a custom theme. Theming app settings might be overwritten by that.",
+    "Theming" : "Theming",
+    "Appearance" : "Appearance",
+    "Appearance and accessibility" : "Appearance and accessibility",
+    "You can choose between a \"Light Theme\" and a \"Dark Theme\" for the display. In standard mode, MagentaCloud adapts to the theme of your system." : "You can choose between a \"Light Theme\" and a \"Dark Theme\" for the display. In standard mode, MagentaCloud adapts to the theme of your system."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
