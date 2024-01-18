@@ -28,6 +28,6 @@ class DevicesSessions implements IIconSection {
 	}
 
 	public function getPriority(): int {
-		return -1;
+		return -10;
 	}
 }

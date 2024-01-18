@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import { getRequestToken } from '@nextcloud/auth'
 import { translate as t } from '@nextcloud/l10n'
-import '@nextcloud/dialogs/dist/index.css'
 
 import EmailSection from '../components/EmailSection/EmailSection.vue'
 import LanguageSection from '../components/LanguageSection/LanguageSection.vue'
