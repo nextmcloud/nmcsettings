@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		const type = element.attributes['data-section-type'].value
 		if (type === 'personal') {
 			const id = element.attributes['data-section-id'].value
-			if (id !== 'account' && id !== 'sessions') {
+			if (id !== 'account' && id !== 'sessions' && id !== 'appearance') {
 				element.remove()
 			}
 		}
@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		const admin = '/admin'
 		const account = '/account'
 		const sessions = '/sessions'
-		const themes = '/themes'
+		const themes = '/appearance'
 
 		if (href.includes(admin) || href.includes(account) || href.includes(sessions) || href.includes(themes)) {
 			if (href.includes(admin)) {

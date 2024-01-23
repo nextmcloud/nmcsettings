@@ -68,7 +68,7 @@ class NmcPersonalThemes implements ISettings {
 
 	/** {@inheritDoc} */
 	public function getSection(): string {
-		return 'themes';
+		return 'appearance';
 	}
 
 	/** {@inheritDoc} */

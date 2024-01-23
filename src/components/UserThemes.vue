@@ -23,13 +23,13 @@
 
 <template>
 	<section>
-		<NcSettingsSection :title="t('nmcsettings', 'Appearance')"
+		<NcSettingsSection :name="t('nmcsettings', 'Appearance')"
 			:limit-width="false"
 			class="theming">
 			<p v-html="description" />
 
 			<h2 class="subheader">
-				{{ t('nmcsettings', 'Theming') }}
+				{{ t('nmcsettings', 'Design') }}
 			</h2>
 
 			<p v-html="themedescription" />
@@ -60,8 +60,6 @@ const availableThemes = loadState('theming', 'themes', [])
 const enforceTheme = loadState('theming', 'enforceTheme', '')
 const shortcutsDisabled = loadState('theming', 'shortcutsDisabled', false)
 
-const background = loadState('theming', 'background')
-const themingDefaultBackground = loadState('theming', 'themingDefaultBackground')
 const isUserThemingDisabled = loadState('theming', 'isUserThemingDisabled')
 
 console.debug('Available themes', availableThemes)
@@ -79,8 +77,6 @@ export default {
 			availableThemes,
 			enforceTheme,
 			shortcutsDisabled,
-			background,
-			themingDefaultBackground,
 			isUserThemingDisabled,
 		}
 	},
@@ -128,10 +124,6 @@ export default {
 	},
 
 	methods: {
-		updateBackground(data) {
-			this.background = (data.type === 'custom' || data.type === 'default') ? data.type : data.value
-			this.$emit('update:background')
-		},
 
 		changeTheme({ enabled, id }) {
 			// Reset selected and select new one
