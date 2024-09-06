@@ -5,7 +5,7 @@
 	<name>MagentaCLOUD Settings</name>
 	<summary>Settings App for MagentaCLOUD</summary>
 	<description>Custom Settings App for MagentaCloud tailored to the needs of our users</description>
-	<version>0.0.1</version>
+	<version>1.0.1</version>
 	<licence>agpl</licence>
 	<author>T-Systems International</author>
 	<namespace>NMCSettings</namespace>
