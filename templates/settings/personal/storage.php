@@ -70,10 +70,8 @@ declare(strict_types=1);
 
         <div class="personal-settings-container">
             <div class="personal-settings-setting-box">
-                <a href="https://cloud.telekom-dienste.de/tarife" target="_blank">
-                    <button>
-                        <?php print_unescaped($l->t('Expand storage')); ?>
-                    </button>
+                <a href="https://cloud.telekom-dienste.de/tarife" target="_blank" class="button-vue--vue-secondary storage-quota__link">
+                    <?php print_unescaped($l->t('Expand storage')); ?>
                 </a>
             </div>
         </div>

@@ -4,13 +4,13 @@
 			<input :id="inputId"
 				ref="email"
 				type="email"
+				:class="setNotificationMailClass"
+				:aria-describedby="helperText ? `${inputId}-helper-text` : ''"
 				:placeholder="inputPlaceholder"
 				:value="email"
-				:aria-describedby="helperText ? `${inputId}-helper-text` : ''"
-				autocapitalize="none"
 				autocomplete="on"
+				autocapitalize="none"
 				autocorrect="off"
-				:class="setNotificationMailClass"
 				@input="onEmailChange">
 
 			<div class="email__actions-container">

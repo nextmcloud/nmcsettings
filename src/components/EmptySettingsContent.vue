@@ -16,7 +16,7 @@ export default {
 	},
 	methods: {
 		redirect() {
-			// window.location.href = this.url
+			window.location.href = this.url
 		},
 	},
 }
