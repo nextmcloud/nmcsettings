@@ -1,16 +1,18 @@
 <template>
 	<div>
 		<div class="email">
-			<input :id="inputId"
-				ref="email"
+			<input 
 				type="email"
+				:id="inputId"
+				:aria-describedby="helperText ? `${inputId}-helper-text` : ''"
 				:placeholder="inputPlaceholder"
 				:value="email"
-				:aria-describedby="helperText ? `${inputId}-helper-text` : ''"
-				autocapitalize="none"
+				ref="email"
+				read-only=""
+				readonly=""
 				autocomplete="on"
-				autocorrect="off"
-				disabled="disabled">
+				autocapitalize="none"
+				autocorrect="off" />
 
 			<div class="email__actions-container">
 				<transition name="fade">
