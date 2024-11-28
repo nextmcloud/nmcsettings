@@ -1,18 +1,17 @@
 <template>
 	<div>
 		<div class="email">
-			<input 
+			<input :id="inputId"
+				ref="email"
 				type="email"
-				:id="inputId"
 				:class="setNotificationMailClass"
 				:aria-describedby="helperText ? `${inputId}-helper-text` : ''"
 				:placeholder="inputPlaceholder"
 				:value="email"
-				ref="email"
 				autocomplete="on"
 				autocapitalize="none"
 				autocorrect="off"
-				@input="onEmailChange" />
+				@input="onEmailChange">
 
 			<div class="email__actions-container">
 				<transition name="fade">

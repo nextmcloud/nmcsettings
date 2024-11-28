@@ -26,12 +26,14 @@
 		<NcSettingsSection :name="t('nmcsettings', 'Appearance')"
 			:limit-width="false"
 			class="theming">
+			<!-- eslint-disable-next-line vue/no-v-html -->
 			<p v-html="description" />
 
 			<h2 class="subheader">
 				{{ t('nmcsettings', 'Design') }}
 			</h2>
 
+			<!-- eslint-disable-next-line vue/no-v-html -->
 			<p v-html="themedescription" />
 
 			<div class="theming__preview-list">
@@ -99,7 +101,7 @@ export default {
 			// using the `t` replace method escape html, we have to do it manually :/
 			return t(
 				'nmcsettings',
-				'Universal access is very important to us. We follow web standards and check to make everything usable also without mouse, and assistive software such as screenreaders. We aim to be compliant with the {guidelines}Web Content Accessibility Guidelines{linkend} 2.1 on AA level.'
+				'Universal access is very important to us. We follow web standards and check to make everything usable also without mouse, and assistive software such as screenreaders. We aim to be compliant with the {guidelines}Web Content Accessibility Guidelines{linkend} 2.1 on AA level.',
 			)
 				.replace('{guidelines}', this.guidelinesLink)
 				.replace('{linkend}', '</a>')
@@ -112,7 +114,7 @@ export default {
 		themedescription() {
 			return t(
 				'nmcsettings',
-				'You can choose between a "Light Theme" and a "Dark Theme" for the display. In standard mode, MagentaCloud adapts to the theme of your system.'
+				'You can choose between a "Light Theme" and a "Dark Theme" for the display. In standard mode, MagentaCloud adapts to the theme of your system.',
 			)
 		},
 	},
