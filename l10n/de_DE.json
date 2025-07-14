@@ -21,7 +21,7 @@
     "Desktop software": "Desktop Software",
     "Monthly Status Email": "Regelmäßige Mails",
     "WebDAV Address": "WebDAV Adresse",
-    "With the WebDAV address, you can set up your MagentaCLOUD as a network drive on Windows, for example. You can find more information about WebDAV and how to use it": "Mit der WebDAV Adresse können sie ihre MagentaCLOUD z.B. als Netzlaufwerk bei Windows einrichten. Weitere Information über WebDAV und wie Sie es nutzen können finden Sie",
+    "With the WebDAV address, you can set up your MagentaCLOUD as a network drive on Windows, for example. You can find more information about WebDAV and how to use it": "Mit der WebDAV Adresse können Sie Ihre MagentaCLOUD z.B. als Netzlaufwerk bei Windows einrichten. Weitere Information über WebDAV und wie Sie es nutzen können finden Sie",
     "here.":"hier.",
     "Could not copy WebDAV address. Please copy it manually." : "Die WebDAV Adresse konnte nicht kopiert werden. Bitte kopieren Sie sie manuell.",
     "Devices & sessions" : "Geräte & Sitzungen",
@@ -62,7 +62,7 @@
     "Create new app password" : "Neues App-Passwort erstellen",
     "Session name" : "Bezeichnung der Sitzung",
     "Create new session" : "Neue Sitzung erstellen",
-    "Use the credentials below to configure your app or device." : "Nutzen Sie die unten angebenen Anmeldeinformationen, um ihre App oder ihr Gerät zu konfigurieren.",
+    "Use the credentials below to configure your app or device." : "Nutzen Sie die unten angebenen Anmeldeinformationen, um Ihre App oder Ihr Gerät zu konfigurieren.",
     "For security reasons this password will only be shown once." : "Aus Sicherheitsgründen wird das Passwort nur einmal angezeigt.",
     "Username" : "Benutzername",
     "Password" : "Passwort",
@@ -73,8 +73,8 @@
     "Copy" : "Kopieren",
     "Copy password" : "Passwort kopieren",
     "Could not copy app password. Please copy it manually." : "Das Passwort für die App konnte nicht kopiert werden. Bitte kopieren Sie es manuell.",
-    "You can terminate individual sessions here or remove them completely. When terminating, a new login is necessary. If you delete a session, all data of your MagentaCLOUD on the respective device will also be removed.": "Sie können einzelne Sitzungen hier beenden oder ganz entfernen. Beim Beenden wird ein erneuter Login notwendig. Löschen Sie eine Sitzung, werden auch alle Daten ihrer MagentaCLOUD auf dem betreffenden Gerät entfernt.",
-    "You can manually create a new session here and connect a new device to your MagentaCLOUD via login data or QR code.": "Sie können hier manuell eine neue Sitzung erstellen und per Login-Daten oder QR-Code ein neues Gerät mit ihrer MagentaCLOUD verbinden.",
+    "You can terminate individual sessions here or remove them completely. When terminating, a new login is necessary. If you delete a session, all data of your MagentaCLOUD on the respective device will also be removed.": "Sie können einzelne Sitzungen hier beenden oder ganz entfernen. Beim Beenden wird ein erneuter Login notwendig. Löschen Sie eine Sitzung, werden auch alle Daten Ihrer MagentaCLOUD auf dem betreffenden Gerät entfernt.",
+    "You can manually create a new session here and connect a new device to your MagentaCLOUD via login data or QR code.": "Sie können hier manuell eine neue Sitzung erstellen und per Login-Daten oder QR-Code ein neues Gerät mit Ihrer MagentaCLOUD verbinden.",
     "Authentication required" : "Authentifizierung benötigt",
     "Search": "Suche",
     "Customer center": "Kundencenter",
@@ -115,6 +115,6 @@
     "Theming" : "Design",
     "Appearance" : "Erscheinungsbild",
     "Appearance and accessibility" : "Aussehen und Barrierefreiheit",
-    "You can choose between a \"Light Theme\" and a \"Dark Theme\" for the display. In standard mode, MagentaCloud adapts to the theme of your system." : "Für die Anzeige können Sie zwischen einem \"Hellen Design\" und einem \"Dunklen Design\" wählen. Im Standard-Modus passt sich MagentaCLOUD an das Design ihres Systems an."
+    "You can choose between a \"Light Theme\" and a \"Dark Theme\" for the display. In standard mode, MagentaCloud adapts to the theme of your system." : "Für die Anzeige können Sie zwischen einem \"Hellen Design\" und einem \"Dunklen Design\" wählen. Im Standard-Modus passt sich MagentaCLOUD an das Design Ihres Systems an."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
