@@ -1,4 +1,4 @@
-import { VALIDATE_EMAIL_REGEX } from '../constants/AccountPropertyConstants.js'
+import { VALIDATE_EMAIL_REGEX, UNICODE_EMAIL_REGEX } from '../constants/AccountPropertyConstants.js'
 
 /**
  * Validate the email input
@@ -12,7 +12,10 @@ import { VALIDATE_EMAIL_REGEX } from '../constants/AccountPropertyConstants.js'
  */
 export function validateEmail(input) {
 	return typeof input === 'string'
-		&& VALIDATE_EMAIL_REGEX.test(input)
+		&& (
+			VALIDATE_EMAIL_REGEX.test(input)
+			|| UNICODE_EMAIL_REGEX.test(input)
+		)
 		&& input.slice(-1) !== '\n'
 		&& input.length <= 320
 		&& encodeURIComponent(input).replace(/%../g, 'x').length <= 320

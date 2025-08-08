@@ -3,7 +3,7 @@
 		<div class="email">
 			<input :id="inputId"
 				ref="email"
-				type="email"
+				type="text"
 				:class="setNotificationMailClass"
 				:aria-describedby="helperText ? `${inputId}-helper-text` : ''"
 				:placeholder="inputPlaceholder"
