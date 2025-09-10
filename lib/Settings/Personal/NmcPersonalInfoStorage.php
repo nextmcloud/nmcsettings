@@ -68,7 +68,7 @@ class NmcPersonalInfoStorage implements ISettings {
 			$totalSpace = $this->humanFileSize($storageInfo['total']);
 		}
 
-		$trashSizeinBytes = self::getTrashbinSize($this->uid);
+		$trashSizeinBytes = $this->getTrashbinSize($this->uid);
 		$filesSizeInBytes = $storageInfo['used'] - $photoVideoSizeInBytes;
 
 		if($filesSizeInBytes < 0) {
@@ -142,11 +142,34 @@ class NmcPersonalInfoStorage implements ISettings {
 
 		return $tariff;
 	}
-
+/*
 	private static function getTrashbinSize($user) {
 		$view = new View('/' . $user);
 		$fileInfo = $view->getFileInfo('/files_trashbin');
 		return isset($fileInfo['size']) ? $fileInfo['size'] : 0;
+	}
+*/
+	private function getTrashbinSize($user) {
+		$details = null;
+
+		$rootFolder = \OC::$server->getRootFolder()->getUserFolder($user);
+		$storageId = $rootFolder->getStorage()->getCache()->getNumericStorageId();
+
+		$query = $this->db->getQueryBuilder();
+
+		$query->selectAlias($query->func()->sum('size'), 'f1')
+			->from('filecache', 'fc')
+			->where($query->expr()->neq('fc.size', $query->createPositionalParameter(-1)))
+			->andWhere("fc.path Like 'files_trashbin/files/%'")
+			->andWhere($query->expr()->eq('fc.storage', $query->createPositionalParameter($storageId)));
+
+		$result = $query->execute();
+
+		while ($row = $result->fetch()) {
+			$details = $row['f1'];
+		}
+		$result->closeCursor();
+		return $details;
 	}
 
 	private function storageUtilization($user = null, $filterMimetypes = null) {
@@ -204,7 +227,7 @@ class NmcPersonalInfoStorage implements ISettings {
 				return $relativeSize . ' ' . $readableFormat;
 			}
 		} else {
-			return $bytes . ' ' . $humanList[0];
+			return '0 ' . $humanList[0];
 		}
 	}
 }
