@@ -154,6 +154,7 @@ class NmcPersonalInfoStorage implements ISettings {
 
 		$rootFolder = \OC::$server->getRootFolder()->getUserFolder($user);
 		$storageId = $rootFolder->getStorage()->getCache()->getNumericStorageId();
+		$foldermime = 2;
 
 		$query = $this->db->getQueryBuilder();
 
@@ -161,15 +162,13 @@ class NmcPersonalInfoStorage implements ISettings {
 			->from('filecache', 'fc')
 			->where($query->expr()->neq('fc.size', $query->createPositionalParameter(-1)))
 			->andWhere("fc.path Like 'files_trashbin/files/%'")
-			->andWhere($query->expr()->eq('fc.storage', $query->createPositionalParameter($storageId)));
+			->andWhere($query->expr()->eq('fc.storage', $query->createPositionalParameter($storageId)))
+			->andWhere($query->expr()->neq('fc.mimetype', $query->createPositionalParameter($foldermime)));
 
-		$result = $query->execute();
+		$result = $query->executeQuery();
+		$size = $result->fetchOne();
 
-		while ($row = $result->fetch()) {
-			$details = $row['f1'];
-		}
-		$result->closeCursor();
-		return $details;
+		return $size ?? 0;
 	}
 
 	private function storageUtilization($user = null, $filterMimetypes = null) {
