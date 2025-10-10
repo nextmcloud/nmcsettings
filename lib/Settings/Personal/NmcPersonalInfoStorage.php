@@ -51,12 +51,16 @@ class NmcPersonalInfoStorage implements ISettings {
 
 		$user = $this->userManager->get($this->uid);
 
-		$imageMimetypes = "'image','image/jpg','image/jpeg','image/gif','image/png','image/svg+xml','image/webp'";
-		$videoMimetypes = "'video','video/3gpp','video/mp4', 'video/mov', 'video/avi', 'video/flv'";
+		// $imageMimetypes = "'image','image/jpg','image/jpeg','image/gif','image/png','image/svg+xml','image/webp'";
+		// $videoMimetypes = "'video','video/3gpp','video/mp4', 'video/mov', 'video/avi', 'video/flv'";
 
-		$imageStorageInBytes = $this->storageUtilization($this->uid, $imageMimetypes);
-		$videoStorageInBytes = $this->storageUtilization($this->uid, $videoMimetypes);
-		$photoVideoSizeInBytes = $imageStorageInBytes + $videoStorageInBytes;
+		$photoVideoMimetypeIds = "11,12,14,15,16,21,22,23,24,25,26,27,28,29,30";
+
+		// $imageStorageInBytes = $this->storageUtilization($this->uid, $imageMimetypes);
+		// $videoStorageInBytes = $this->storageUtilization($this->uid, $videoMimetypes);
+		// $photoVideoSizeInBytes = $imageStorageInBytes + $videoStorageInBytes;
+
+		$photoVideoSizeInBytes = $this->storageUtilization($this->uid, $photoVideoMimetypeIds);
 
 		// make sure FS is setup before querying storage related stuff...
 		\OC_Util::setupFS($user->getUID());
@@ -158,12 +162,10 @@ class NmcPersonalInfoStorage implements ISettings {
 
 		$query = $this->db->getQueryBuilder();
 
-		$query->selectAlias($query->func()->sum('size'), 'f1')
+		$query->select('size')
 			->from('filecache', 'fc')
-			->where($query->expr()->neq('fc.size', $query->createPositionalParameter(-1)))
-			->andWhere("fc.path Like 'files_trashbin/files/%'")
-			->andWhere($query->expr()->eq('fc.storage', $query->createPositionalParameter($storageId)))
-			->andWhere($query->expr()->neq('fc.mimetype', $query->createPositionalParameter($foldermime)));
+			->where($query->expr()->eq('fc.storage', $query->createPositionalParameter($storageId)))
+			->andWhere($query->expr()->eq('fc.path', $query->createPositionalParameter('files_trashbin')));
 
 		$result = $query->executeQuery();
 		$size = $result->fetchOne();
@@ -181,19 +183,14 @@ class NmcPersonalInfoStorage implements ISettings {
 
 		$query->selectAlias($query->func()->sum('size'), 'f1')
 			->from('filecache', 'fc')
-			->innerJoin('fc', 'mimetypes', 'mt', $query->expr()->eq('fc.mimetype', 'mt.id'))
-			->where('mt.mimetype in('.$filterMimetypes.')')
-			->andWhere($query->expr()->neq('fc.size', $query->createPositionalParameter(-1)))
+			->where('fc.mimetype IN ('.$filterMimetypes.')')
 			->andWhere("fc.path NOT Like 'files_trashbin/files/%'")
 			->andWhere($query->expr()->eq('fc.storage', $query->createPositionalParameter($storageId)));
 
-		$result = $query->execute();
+		$result = $query->executeQuery();
+		$size = $result->fetchOne();
 
-		while ($row = $result->fetch()) {
-			$details = $row['f1'];
-		}
-		$result->closeCursor();
-		return $details;
+		return $size ?? 0;
 	}
 
 	private function humanFileSize($bytes, $binary = true) {
