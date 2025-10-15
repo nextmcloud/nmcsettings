@@ -162,10 +162,10 @@ class NmcPersonalInfoStorage implements ISettings {
 
 		$query = $this->db->getQueryBuilder();
 
-		$query->select('size')
+		$query->selectAlias($query->func()->sum('size'), 'f1')
 			->from('filecache', 'fc')
-			->where($query->expr()->eq('fc.storage', $query->createPositionalParameter($storageId)))
-			->andWhere($query->expr()->eq('fc.path', $query->createPositionalParameter('files_trashbin')));
+			->where("fc.path Like 'files_trashbin/files/%'")
+			->andWhere($query->expr()->eq('fc.storage', $query->createPositionalParameter($storageId)));
 
 		$result = $query->executeQuery();
 		$size = $result->fetchOne();
