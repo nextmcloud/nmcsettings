@@ -146,13 +146,14 @@ class NmcPersonalInfoStorage implements ISettings {
 
 		return $tariff;
 	}
-/*
+
 	private static function getTrashbinSize($user) {
 		$view = new View('/' . $user);
 		$fileInfo = $view->getFileInfo('/files_trashbin');
 		return isset($fileInfo['size']) ? $fileInfo['size'] : 0;
 	}
-*/
+
+/*
 	private function getTrashbinSize($user) {
 		$details = null;
 
@@ -172,6 +173,7 @@ class NmcPersonalInfoStorage implements ISettings {
 
 		return $size ?? 0;
 	}
+*/
 
 	private function storageUtilization($user = null, $filterMimetypes = null) {
 		$details = null;
