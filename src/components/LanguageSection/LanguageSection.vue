@@ -42,6 +42,20 @@ export default {
 		}
 	},
 
+	created() {
+		const localizeLanguage = (l) => {
+			if (l.code === 'de_DE') {
+				return { ...l, name: t('nmcsettings', 'Deutsch') }
+			}
+			if (l.code === 'en_GB') {
+				return { ...l, name: t('nmcsettings', 'English') }
+			}
+			return l
+		}
+		this.commonLanguages = this.commonLanguages.map(localizeLanguage)
+		this.otherLanguages = this.otherLanguages.map(localizeLanguage)
+	},
+
 	computed: {
 		inputId() {
 			return `account-setting-${ACCOUNT_SETTING_PROPERTY_ENUM.LANGUAGE}`
