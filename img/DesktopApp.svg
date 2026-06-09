@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="249" height="64" viewBox="0 0 249 64">
+  <g id="Gruppe_691" data-name="Gruppe 691" transform="translate(1381 12347)">
+    <g id="Gruppe_689" data-name="Gruppe 689">
+      <rect id="Rechteck_2574" data-name="Rechteck 2574" width="249" height="64" rx="8" transform="translate(-1381 -12347)" fill="#191919"/>
+      <text id="Desktop_App" data-name="Desktop App" transform="translate(-1298 -12297)" fill="#fff" font-size="30" font-family="TeleNeo-Bold, TeleNeo" font-weight="700" letter-spacing="-0.015em"><tspan x="0" y="0">Desktop App</tspan></text>
+      <text id="Windows_OS_X" data-name="Windows &amp; OS X" transform="translate(-1298 -12323)" fill="#fff" font-size="14" font-family="TeleNeo-Regular, TeleNeo"><tspan x="0" y="0">Windows &amp; OS X</tspan></text>
+      <g id="icon_device_computer_selected" data-name="icon/device/computer/selected" transform="translate(-1365 -12336.89)">
+        <path id="Shape" d="M57.405,34.746a4.784,4.784,0,0,1-4.427,4.771l-.357.013H4.784A4.784,4.784,0,0,1,.013,35.1L0,34.746ZM44.25,4.25a5.37,5.37,0,0,1,5.362,4.908l.02.474V31.159H7.774V9.632A5.37,5.37,0,0,1,12.682,4.27l.474-.02ZM17.939,12.634V24.808l2.583-3.086,2.392,5.7,2.2-.933L22.723,20.8l3.935.335Z" transform="translate(0 0)" fill="#fff" fill-rule="evenodd"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -8,12 +8,15 @@ script('nmcsettings', ['nmcsettings-devices']);
     <div class="personal-settings-account-container">
         <div class="personal-settings-container clients-box">
             <div class="personal-settings-setting-box">
-                <h2><?php p($l->t('Mobile applications')); ?></h2>
+                <h2><?php p($l->t('MagentaCLOUD applications')); ?></h2>
                 <a href="https://apps.apple.com/de/app/magentacloud-cloud-speicher/id312838242" rel="noreferrer noopener" target="_blank">
                     <img src="<?php p($appWebPath); ?>/img/iOS.svg" alt="iOS-App">
                 </a>
                 <a href="https://app.adjust.com/r4e1yl" rel="noreferrer noopener" target="_blank">
                     <img src="<?php p($appWebPath); ?>/img/Google-Play-Store.svg" alt="Android-App">
+                </a>
+                <a href="https://cloud.telekom-dienste.de/software-apps" rel="noreferrer noopener" target="_blank">
+                    <img src="<?php p($appWebPath); ?>/img/DesktopApp.svg" alt="Desktop-App">
                 </a>
             </div>
         </div>
