@@ -40,6 +40,8 @@
 <script>
 import { loadState } from '@nextcloud/initial-state'
 
+import { convertEmailDomainToUnicode } from '../../utils/email.js'
+
 import Email from './Email.vue'
 import EmailPrimary from './EmailPrimary.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
@@ -66,10 +68,14 @@ export default {
 	data() {
 		return {
 			accountProperty: ACCOUNT_PROPERTY_READABLE_ENUM.EMAIL,
-			additionalEmails: additionalEmails.map(properties => ({ ...properties, key: this.generateUniqueKey() })),
+			additionalEmails: additionalEmails.map(properties => ({
+				...properties,
+				key: this.generateUniqueKey(),
+				value: convertEmailDomainToUnicode(properties.value),
+			})),
 			displayNameChangeSupported,
-			primaryEmail: { ...primaryEmail, readable: NAME_READABLE_ENUM[primaryEmail.name] },
-			notificationEmail,
+			primaryEmail: { ...primaryEmail, readable: NAME_READABLE_ENUM[primaryEmail.name], value: convertEmailDomainToUnicode(primaryEmail.value) },
+			notificationEmail: convertEmailDomainToUnicode(notificationEmail),
 		}
 	},
 
@@ -175,6 +181,7 @@ export default {
 		generateUniqueKey() {
 			return Math.random().toString(36).substring(2)
 		},
+
 	},
 }
 </script>
