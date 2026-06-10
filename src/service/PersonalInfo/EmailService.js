@@ -3,6 +3,7 @@ import { getCurrentUser } from '@nextcloud/auth'
 import { generateOcsUrl } from '@nextcloud/router'
 import { confirmPassword } from '@nextcloud/password-confirmation'
 import '@nextcloud/password-confirmation/dist/style.css'
+import { convertEmailDomainToASCII } from '../../utils/email.js'
 
 import { ACCOUNT_PROPERTY_ENUM, SCOPE_SUFFIX } from '../../constants/AccountPropertyConstants.js'
 
@@ -20,7 +21,7 @@ export const savePrimaryEmail = async (email) => {
 
 	const res = await axios.put(url, {
 		key: ACCOUNT_PROPERTY_ENUM.EMAIL,
-		value: email,
+		value: convertEmailDomainToASCII(email),
 	})
 
 	return res.data
@@ -42,7 +43,7 @@ export const saveAdditionalEmail = async (email) => {
 
 	const res = await axios.put(url, {
 		key: ACCOUNT_PROPERTY_ENUM.EMAIL_COLLECTION,
-		value: email,
+		value: convertEmailDomainToASCII(email),
 	})
 
 	return res.data
@@ -62,7 +63,7 @@ export const saveNotificationEmail = async (email) => {
 
 	const res = await axios.put(url, {
 		key: ACCOUNT_PROPERTY_ENUM.NOTIFICATION_EMAIL,
-		value: email,
+		value: convertEmailDomainToASCII(email),
 	})
 
 	return res.data
@@ -81,7 +82,7 @@ export const removeAdditionalEmail = async (email) => {
 	await confirmPassword()
 
 	const res = await axios.put(url, {
-		key: email,
+		key: convertEmailDomainToASCII(email),
 		value: '',
 	})
 
@@ -102,11 +103,12 @@ export const updateAdditionalEmail = async (prevEmail, newEmail) => {
 	await confirmPassword()
 
 	const res = await axios.put(url, {
-		key: prevEmail,
-		value: newEmail,
+		key: convertEmailDomainToASCII(prevEmail),
+		value: convertEmailDomainToASCII(newEmail),
 	})
 
 	return res.data
+
 }
 
 /**
@@ -143,7 +145,7 @@ export const saveAdditionalEmailScope = async (email, scope) => {
 	await confirmPassword()
 
 	const res = await axios.put(url, {
-		key: email,
+		key: convertEmailDomainToASCII(email),
 		value: scope,
 	})
 
