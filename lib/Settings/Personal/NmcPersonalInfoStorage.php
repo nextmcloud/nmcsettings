@@ -69,7 +69,7 @@ class NmcPersonalInfoStorage implements ISettings {
 		if ($storageInfo['quota'] === FileInfo::SPACE_UNLIMITED) {
 			$totalSpace = $this->l->t('Unlimited');
 		} else {
-			$totalSpace = $this->humanFileSize($storageInfo['total']);
+			$totalSpace = $this->humanFileSize($storageInfo['total'], true, 0);
 		}
 
 		$trashSizeinBytes = $this->getTrashbinSize($this->uid);
@@ -128,7 +128,7 @@ class NmcPersonalInfoStorage implements ISettings {
 			$tariff = $this->l->t('Space not computed');
 		} elseif ($totalSpaceInGB == 1 || $totalSpaceInGB == 3 || $totalSpaceInGB == 10) {
 			$tariff = $this->l->t('MagentaCLOUD Free');
-		} elseif ($totalSpaceInGB == 15 || $totalSpaceInGB == 25) {
+		} elseif ($totalSpaceInGB == 5 || $totalSpaceInGB == 15 || $totalSpaceInGB == 25) {
 			$tariff = $this->l->t('MagentaCLOUD S');
 		} elseif ($totalSpaceInGB == 64) {
 			$tariff = $this->l->t('MagentaCLOUD s64');
@@ -195,7 +195,7 @@ class NmcPersonalInfoStorage implements ISettings {
 		return $size ?? 0;
 	}
 
-	private function humanFileSize($bytes, $binary = true) {
+	private function humanFileSize($bytes, $binary = true, $decimals = 2) {
 		$humanList = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
 		$kilo = 1000;
 
@@ -221,7 +221,7 @@ class NmcPersonalInfoStorage implements ISettings {
 					$decimalSeparator = '.';
 				}
 	
-				$relativeSize = number_format($relativeSize, 2, $decimalSeparator, '');
+				$relativeSize = number_format($relativeSize, $decimals, $decimalSeparator, '');
 				return $relativeSize . ' ' . $readableFormat;
 			}
 		} else {
