@@ -17,15 +17,15 @@ use OCP\Settings\ISettings;
 
 class NmcEndToEndEncryption implements ISettings {
 	private IKeyStorage $keyStorage;
-	private IInitialStateService $initialStateService;
+	private IInitialStateService $initialState;
 	private ?string $userId;
 	private IUserSession $userSession;
 	private EConfig $eConfig;
 	private IConfig $config;
 
-	public function __construct(IKeyStorage $keyStorage, IInitialStateService $initialStateService, ?string $userId, IUserSession $userSession, EConfig $eConfig, IConfig $config) {
+	public function __construct(IKeyStorage $keyStorage, IInitialStateService $initialState, ?string $userId, IUserSession $userSession, EConfig $eConfig, IConfig $config) {
 		$this->keyStorage = $keyStorage;
-		$this->initialStateService = $initialStateService;
+		$this->initialState = $initialState;
 		$this->userId = $userId;
 		$this->eConfig = $eConfig;
 		$this->config = $config;
@@ -43,8 +43,19 @@ class NmcEndToEndEncryption implements ISettings {
 
 		$hasKey = $this->keyStorage->publicKeyExists($this->userId)
 			&& $this->keyStorage->privateKeyExists($this->userId);
-		
-		$this->initialStateService->provideInitialState('end_to_end_encryption', 'hasKey', $hasKey);
+			
+		$this->initialState->provideInitialState('end_to_end_encryption', 'hasKey', $hasKey);
+
+		$this->initialState->provideInitialState(
+			'end_to_end_encryption', 
+			'userConfig',
+			['e2eeInBrowserEnabled' => false]
+		);
+
+		if (!$isDisabledForUser) {
+			\OCP\Util::addStyle('end_to_end_encryption', 'end_to_end_encryption' . '-settings-personal');
+			\OCP\Util::addScript('end_to_end_encryption', 'end_to_end_encryption' . '-settings-personal');
+		}
 
 		return new TemplateResponse(
 			'end_to_end_encryption',
