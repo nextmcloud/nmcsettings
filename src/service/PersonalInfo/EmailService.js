@@ -4,8 +4,7 @@ import { generateOcsUrl } from '@nextcloud/router'
 import { confirmPassword } from '@nextcloud/password-confirmation'
 import '@nextcloud/password-confirmation/dist/style.css'
 import { convertEmailDomainToASCII } from '../../utils/email.js'
-
-import { ACCOUNT_PROPERTY_ENUM, SCOPE_SUFFIX } from '../../constants/AccountPropertyConstants.js'
+import { ACCOUNT_PROPERTY_ENUM, SCOPE_SUFFIX, VALIDATE_EMAIL_REGEX } from '../../constants/AccountPropertyConstants.js'
 
 /**
  * Save the primary email of the user
@@ -97,6 +96,10 @@ export const removeAdditionalEmail = async (email) => {
  * @return {object}
  */
 export const updateAdditionalEmail = async (prevEmail, newEmail) => {
+	if (newEmail !== '' && !VALIDATE_EMAIL_REGEX.test(convertEmailDomainToASCII(newEmail))) {
+		throw new Error('Invalid email address')
+	}
+
 	const userId = getCurrentUser().uid
 	const url = generateOcsUrl('cloud/users/{userId}/{collection}', { userId, collection: ACCOUNT_PROPERTY_ENUM.EMAIL_COLLECTION })
 
