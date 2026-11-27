@@ -54,6 +54,7 @@
 import { generateOcsUrl } from '@nextcloud/router'
 import { loadState } from '@nextcloud/initial-state'
 import axios from '@nextcloud/axios'
+import { showError } from '@nextcloud/dialogs' // eslint-disable-line n/no-extraneous-import
 import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection.js'
 
 import ItemPreview from './ItemPreview.vue'
@@ -215,7 +216,7 @@ export default {
 
 			} catch (err) {
 				console.error(err, err.response)
-				OC.Notification.showTemporary(t('nmcsettings', err.response.data.ocs.meta.message + '. Unable to apply the setting.'))
+				showError(t('nmcsettings', err.response.data.ocs.meta.message + '. Unable to apply the setting.'))
 			}
 		},
 	},

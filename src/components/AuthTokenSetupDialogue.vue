@@ -132,7 +132,7 @@ export default {
 				})
 				.catch(err => {
 					console.error('could not create a new app password', err)
-					OC.Notification.showTemporary(t('nmcsettings', 'Error while creating device token'))
+					showError(t('nmcsettings', 'Error while creating device token'))
 
 					this.reset()
 				})
