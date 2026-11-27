@@ -9,40 +9,47 @@ namespace OCA\NMCSettings\Settings\Personal\Security;
 
 use OCA\EndToEndEncryption\Config as EConfig;
 use OCA\EndToEndEncryption\IKeyStorage;
+use OCP\App\IAppManager;
 use OCP\AppFramework\Http\TemplateResponse;
-use OCP\IConfig;
 use OCP\IInitialStateService;
 use OCP\IUserSession;
 use OCP\Settings\ISettings;
+use Psr\Container\ContainerInterface;
 
 class NmcEndToEndEncryption implements ISettings {
-	private IKeyStorage $keyStorage;
+	private IAppManager $appManager;
+	private ContainerInterface $container;
 	private IInitialStateService $initialState;
 	private ?string $userId;
 	private IUserSession $userSession;
-	private EConfig $eConfig;
-	private IConfig $config;
 
-	public function __construct(IKeyStorage $keyStorage, IInitialStateService $initialState, ?string $userId, IUserSession $userSession, EConfig $eConfig, IConfig $config) {
-		$this->keyStorage = $keyStorage;
+	public function __construct(IAppManager $appManager, ContainerInterface $container, IInitialStateService $initialState, ?string $userId, IUserSession $userSession) {
+		$this->appManager = $appManager;
+		$this->container = $container;
 		$this->initialState = $initialState;
 		$this->userId = $userId;
-		$this->eConfig = $eConfig;
-		$this->config = $config;
 		$this->userSession = $userSession;
 	}
 
 	public function getForm(): TemplateResponse {
-		$isDisabledForUser = $this->eConfig->isDisabledForUser($this->userSession->getUser());
+		$user = $this->userSession->getUser();
 
-		if($this->config->getAppValue('end_to_end_encryption', 'enabled') === 'no' || $isDisabledForUser) {
+		// e2ee classes only exist while the app is enabled, so resolve them lazily
+		if (!$this->appManager->isEnabledForUser('end_to_end_encryption', $user)) {
+			return new TemplateResponse('settings', 'settings/empty', [], '');
+		}
+
+		$isDisabledForUser = $this->container->get(EConfig::class)->isDisabledForUser($user);
+
+		if ($isDisabledForUser) {
 			return new TemplateResponse('settings', 'settings/empty', [], '');
 		}
 
 		assert($this->userId !== null, "We are always logged in inside the setting app");
 
-		$hasKey = $this->keyStorage->publicKeyExists($this->userId)
-			&& $this->keyStorage->privateKeyExists($this->userId);
+		$keyStorage = $this->container->get(IKeyStorage::class);
+		$hasKey = $keyStorage->publicKeyExists($this->userId)
+			&& $keyStorage->privateKeyExists($this->userId);
 			
 		$this->initialState->provideInitialState('end_to_end_encryption', 'hasKey', $hasKey);
 
