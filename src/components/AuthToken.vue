@@ -117,6 +117,8 @@ const userAgentMap = {
 	// Neon 1.0.0+1
 	neon: /Neon \d+\.\d+\.\d+\+\d+/,
 }
+const productName = window.OC.theme.productName
+
 const nameMap = {
 	ie: t('nmcsettings', 'Internet Explorer'),
 	edge: t('nmcsettings', 'Edge'),
@@ -126,10 +128,10 @@ const nameMap = {
 	androidChrome: t('nmcsettings', 'Google Chrome for Android'),
 	iphone: t('nmcsettings', 'iPhone'),
 	ipad: t('nmcsettings', 'iPad'),
-	iosClient: t('nmcsettings', '{productName} iOS app', { productName: window.oc_defaults.productName }),
-	androidClient: t('nmcsettings', '{productName} Android app', { productName: window.oc_defaults.productName }),
-	iosTalkClient: t('nmcsettings', '{productName} Talk for iOS', { productName: window.oc_defaults.productName }),
-	androidTalkClient: t('nmcsettings', '{productName} Talk for Android', { productName: window.oc_defaults.productName }),
+	iosClient: t('nmcsettings', '{productName} iOS app', { productName }),
+	androidClient: t('nmcsettings', '{productName} Android app', { productName }),
+	iosTalkClient: t('nmcsettings', '{productName} Talk for iOS', { productName }),
+	androidTalkClient: t('nmcsettings', '{productName} Talk for Android', { productName }),
 	davx5: 'DAVx5',
 	webPirate: 'WebPirate',
 	sailfishBrowser: 'SailfishBrowser',
