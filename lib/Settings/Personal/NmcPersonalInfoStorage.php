@@ -5,6 +5,7 @@ namespace OCA\NMCSettings\Settings\Personal;
 use OC\Files\View;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\Files\FileInfo;
+use OCP\Files\IRootFolder;
 use OCP\IConfig;
 use OCP\IDBConnection;
 use OCP\IL10N;
@@ -29,6 +30,9 @@ class NmcPersonalInfoStorage implements ISettings {
 	/** @var IFactory */
 	private $l10nFactory;
 
+	/** @var IRootFolder */
+	private $rootFolder;
+
 	private $uid;
 
 	public function __construct(
@@ -36,8 +40,8 @@ class NmcPersonalInfoStorage implements ISettings {
 		IDBConnection $db,
 		IFactory $l10nFactory,
 		IL10N $l,
-		IUserManager $userManager
-		
+		IUserManager $userManager,
+		IRootFolder $rootFolder
 	) {
 		$this->config = $config;
 		$this->db = $db;
@@ -45,6 +49,7 @@ class NmcPersonalInfoStorage implements ISettings {
 		$this->l10nFactory = $l10nFactory;
 		$this->uid = \OC_User::getUser();
 		$this->userManager = $userManager;
+		$this->rootFolder = $rootFolder;
 	}
 
 	public function getForm(): TemplateResponse {
@@ -178,7 +183,7 @@ class NmcPersonalInfoStorage implements ISettings {
 	private function storageUtilization($user = null, $filterMimetypes = null) {
 		$details = null;
 
-		$rootFolder = \OC::$server->getRootFolder()->getUserFolder($user);
+		$rootFolder = $this->rootFolder->getUserFolder($user);
 		$storageId = $rootFolder->getStorage()->getCache()->getNumericStorageId();
 
 		$query = $this->db->getQueryBuilder();
